@@ -1,5 +1,6 @@
 alert ("hello how are you");
 var push_checkout = function(){
+	var len = Shopify.checkout.line_items.length
 	wizrocket.event=[]
  	wizrocket.event.push("Chechout",{
  		"Amount" : Shopify.checkout.total_price,
@@ -8,8 +9,7 @@ var push_checkout = function(){
  		"Ship_region" : Shopify.checkout.shipping_address.province,
  		"Ship_city" : Shopify.checkout.shipping_address.city,
  		"email" : Shopify.checkout.email,
- 		"items",{
- 			len = Shopify.checkout.line_items.length
+ 		"items" : {
  			for (i=0; i<len; i++) {
  				//alert(Shopify.checkout.line_items[i].title);
  				"product_id" : Shopify.checkout.line_item[i].product_id,
