@@ -6,8 +6,7 @@ var push_checkout = function(){
  		"Currency" : Shopify.checkout.currency,
  		"Ship_country" : Shopify.checkout.shipping_address.country,
  		"Ship_region" : Shopify.checkout.shipping_address.province,
- 		"Ship_city" : Shopify.checkout.shipping_address.city,
-
+ 		"Ship_city" : Shopify.checkout.shipping_address.city
 // Payment mode (Credit Card, Paypal)
 // Items (see the platform specific integration guide for sending a list of products sold)
  	})
