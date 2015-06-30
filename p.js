@@ -12,10 +12,10 @@ var push_checkout = function(){
  		"items" :  {
  			for (i=0; i<len; i++) {
  				//alert(Shopify.checkout.line_items[i].title);
- 				"product_id" : Shopify.checkout.line_item[i].product_id,
- 				"title" : Shopify.checkout.line_items[i].title,
- 				"quantity" : Shopify.checkout.line_items[i].quantity,
- 				"vendor" : Shopify.checkout.line_items[i].vendor
+ 				"product_id"+i : Shopify.checkout.line_item[i].product_id,
+ 				"title"+i : Shopify.checkout.line_items[i].title,
+ 				"quantity"+i : Shopify.checkout.line_items[i].quantity,
+ 				"vendor"+i : Shopify.checkout.line_items[i].vendor
  			}
  		}
 // Payment mode (Credit Card, Paypal)
