@@ -5,7 +5,7 @@ var push_checkout = function(){
 	for (i=0; i<len; i++) {
 		var obj = {};
 	 	//alert(Shopify.checkout.line_items[i].title);
-	 	obj["product_id"] = Shopify.checkout.line_item[i].product_id;
+	 	obj["product_id"] = Shopify.checkout.line_items[i].product_id;
 	 	obj["title"] = Shopify.checkout.line_items[i].title;
 	 	obj["quantity"] = Shopify.checkout.line_items[i].quantity;
 	 	obj["vendor"] = Shopify.checkout.line_items[i].vendor;
