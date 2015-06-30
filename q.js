@@ -6,7 +6,18 @@ var push_checkout = function(){
  		"Currency" : Shopify.checkout.currency,
  		"Ship_country" : Shopify.checkout.shipping_address.country,
  		"Ship_region" : Shopify.checkout.shipping_address.province,
- 		"Ship_city" : Shopify.checkout.shipping_address.city
+ 		"Ship_city" : Shopify.checkout.shipping_address.city,
+ 		"email" : Shopify.checkout.email,
+ 		"items",{
+ 			len = Shopify.checkout.line_items.length
+ 			for (i=0; i<len; i++) {
+ 				//alert(Shopify.checkout.line_items[i].title);
+ 				"product_id" : Shopify.checkout.line_item[i].product_id,
+ 				"title" : Shopify.checkout.line_items[i].title,
+ 				"quantity" : Shopify.checkout.line_items[i].quantity,
+ 				"vendor" : Shopify.checkout.line_items[i].vendor
+ 			}
+ 		}
 // Payment mode (Credit Card, Paypal)
 // Items (see the platform specific integration guide for sending a list of products sold)
  	})
