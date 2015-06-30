@@ -9,7 +9,7 @@ var push_checkout = function(){
  		"Ship_region" : Shopify.checkout.shipping_address.province,
  		"Ship_city" : Shopify.checkout.shipping_address.city,
  		"email" : Shopify.checkout.email,
- 		"items" : {
+ 		"items" :  {
  			for (i=0; i<len; i++) {
  				//alert(Shopify.checkout.line_items[i].title);
  				"product_id" : Shopify.checkout.line_item[i].product_id,
