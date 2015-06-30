@@ -2,7 +2,8 @@ alert ("hello how are you");
 var push_checkout = function(){
 	wizrocket.event=[]
  	wizrocket.event.push("Chechout",{
- 		"Amount" : Shopify.checkout.payment_due
+ 		"Amount" : Shopify.checkout.total_price,
+ 		"Currency" : Shopify.checkout.currency
 //  		Amount (150, 499)
 // Currency (USD, INR)
 // Payment mode (Credit Card, Paypal)
@@ -14,4 +15,10 @@ var push_checkout = function(){
  	alert ("hello checkout");
 	alert(JSON.stringify(wizrocket.event))
 }
-document.getElementsByClassName("thank-you") = push_checkout
+var ref = window.location.href;
+var res = ref.match(/thank_you/gi);
+alert (res)
+if (res != null){
+	alert ("its thank_you page");
+	push_checkout();
+}
