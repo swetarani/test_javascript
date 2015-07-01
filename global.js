@@ -20,7 +20,6 @@ var push_add_to_cart = function(){
  	wizrocket.event = add_to_cart;
 	alert(JSON.stringify(wizrocket.event));
 }
-document.getElementsByName("add")[0].onclick = push_add_to_cart;
 
 
 var push_product_viewed = function(){
@@ -34,14 +33,6 @@ var push_product_viewed = function(){
  	alert("p");
  	wizrocket.event = p;
 	alert(JSON.stringify(wizrocket.event));
-}
-
-var ref = window.location.href
-var res = ref.match(/products/gi);
-alert (res)
-if (res == "products"){
-	alert ("its product page");
-	push_product_viewed;
 }
 
 var push_checkout = function(){
@@ -72,10 +63,23 @@ var push_checkout = function(){
  	alert ("hello checkout");
 	alert(JSON.stringify(wizrocket.event));
 }
-var ref = window.location.href;
+
+var ref = window.location.href
+var res = ref.match(/products/gi);
+alert (res)
 var res = ref.match(/thank_you/gi);
 alert (res);
-if (res != null){
+if (document.getElementsByName("add")[0].onclick){
+	push_add_to_cart();
+}
+else if(res == "products"){
+	alert ("its product page");
+	push_product_viewed();
+}
+else if(res == "thank_you"){
 	alert ("its thank_you page");
 	push_checkout();
+}
+else {
+	alert ("other pages");
 }
