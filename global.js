@@ -22,3 +22,23 @@ var push_add_to_cart = function(){
 }
 document.getElementsByName("add")[0].onclick = push_add_to_cart;
 
+
+var push_product_viewed = function(){
+	var p = [];
+	p.push("Product_viewed",{
+ 		"Product name" : product_title,
+ 		"Category" : product_category_name,
+ 		"Price" : product_price,
+ 		"Currency" : currency
+ 	});
+ 	wizrocket.event = p;
+	alert(JSON.stringify(wizrocket.event));
+}
+
+var ref = window.location.href
+var res = ref.match(/products/gi);
+alert (res)
+if (res != null){
+	alert ("its product page");
+	push_product_viewed;
+}
