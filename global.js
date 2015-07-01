@@ -31,6 +31,7 @@ var push_product_viewed = function(){
  		"Price" : product_price,
  		"Currency" : currency
  	});
+ 	alert("p");
  	wizrocket.event = p;
 	alert(JSON.stringify(wizrocket.event));
 }
