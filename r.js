@@ -10,7 +10,7 @@ var push_checkout = function(){
 	 	obj["vendor"] = Shopify.checkout.line_items[i].vendor;
 	 	items.push(obj);
  	}
-	//wizrocket.event=[];
+	wizrocket.event=[];
  	wizrocket.event.push("Chechout",{
  		"Amount" : Shopify.checkout.total_price,
  		"Currency" : Shopify.checkout.currency,
