@@ -39,7 +39,7 @@ var push_product_viewed = function(){
 var ref = window.location.href
 var res = ref.match(/products/gi);
 alert (res)
-if (res != null){
+if (res == "products"){
 	alert ("its product page");
 	push_product_viewed;
 }
