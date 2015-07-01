@@ -9,3 +9,14 @@ wizrocket.account.push({"id": "WWW-WWW-WWWZ"});
 	s.parentNode.insertBefore(wzrk, s);
 })();
 
+var push_add_to_cart = function(){
+ 	wizrocket.event.push("Added To Cart",{
+ 		"Product name" : product_title,
+ 		"Category" : product_category_name,
+ 		"Price" : product_price,
+ 		"Currency" : currency
+ 	})
+	alert(JSON.stringify(wizrocket.event))
+}
+document.getElementsByName("add")[0].onclick = push_add_to_cart
+
