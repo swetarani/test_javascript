@@ -16,7 +16,7 @@ var push_add_to_cart = function(){
  		"Category" : product_category_name,
  		"Price" : product_price,
  		"Currency" : currency
- 	})
+ 	});
  	wizrocket.event = add_to_cart;
 	alert(JSON.stringify(wizrocket.event));
 }
