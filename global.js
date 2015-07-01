@@ -69,16 +69,17 @@ var res = ref.match(/products/gi);
 alert (res)
 var res = ref.match(/thank_you/gi);
 alert (res);
-if (document.getElementsByName("add")[0].onclick){
-	push_add_to_cart();
-}
-else if(res == "products"){
+
+if(res == "products"){
 	alert ("its product page");
 	push_product_viewed();
 }
 else if(res == "thank_you"){
 	alert ("its thank_you page");
 	push_checkout();
+}
+if (document.getElementsByName("add")[0].onclick){
+	push_add_to_cart();
 }
 else {
 	alert ("other pages");
