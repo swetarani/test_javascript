@@ -89,7 +89,7 @@ var profile_push_checkout = function(){
 //var resproducts = ref.match(/products/gi);
 if(typeof product_json!="undefined"){
 	push_product_viewed();
-	document.getElementById("AddToCart").onclick = push_add_to_cart;
+	document.getElementsByName("add").onclick = push_add_to_cart;
 }
 if(Shopify.checkout != null){
 	profile_push_checkout();
