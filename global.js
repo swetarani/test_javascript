@@ -1,5 +1,5 @@
 var wizrocket = {event:[], profile:[], account:[], enum:function(e){return '$E_' + e}};
-wizrocket.account.push({"id": "6Z6-57Z-6K4Z"});
+wizrocket.account.push({"id": "wizrocket_id"});
 (function () {
        var wzrk = document.createElement('script');
        wzrk.type = 'text/javascript';
@@ -9,45 +9,48 @@ wizrocket.account.push({"id": "6Z6-57Z-6K4Z"});
        s.parentNode.insertBefore(wzrk, s);
 })();
 var push_product_viewed = function(){
-	var prodview = [];
-	prodview.push("Product_viewed",{
+	wizrocket.event.push("Product_viewed",{
  		"Product name" : product_title,
  		"Category" : product_category_name,
  		"Price" : product_price,
  		"Currency" : currency
  	});
- 	wizrocket.event = prodview;
-	alert(JSON.stringify(wizrocket));
+	//alert(JSON.stringify(wizrocket));
 }
 var category_viewed = function(){
-	var categoryview = [];
-	categoryview.push("Category Viewed",{
+	wizrocket.event.push("Category Viewed",{
 		"Category name" : collection_name
 	});
-	wizrocket.event = categoryview;
-	alert(JSON.stringify(wizrocket));
+	//alert(JSON.stringify(wizrocket));
 }
 var push_search = function(){
-	var searched = [];
-	searched.push("Searched",{
+	wizrocket.event.push("Searched",{
 		"Search" : searchterm
 	});
-	wizrocket.event = searched;
-	alert(JSON.stringify(wizrocket));
+	//alert(JSON.stringify(wizrocket));
 }
 var push_add_to_cart = function(){
- 	var addcart=[];
-  	addcart.push("Added To Cart",{
+  	wizrocket.event.push("Added To Cart",{
  		"Product name" : product_title,
   		"Category" : product_category_name,
   		"Price" : product_price,
   		"Currency" : currency
   	});
- 	wizrocket.event=addcart;
- 	alert(JSON.stringify(wizrocket));
+ 	//alert(JSON.stringify(wizrocket));
 }
+
+var pushcheck = function(){
+	wizrocket.event.push("Charged",{
+  		"Amount": Shopify.checkout.total_price,
+  		"Currency": Shopify.checkout.currency,
+//  		"Payment mode": "Credit Card",
+  		"Charged ID": Shopify.checkout.order_id,
+     	//	"Vendor": Shopify.checkout.line_items[0].vendor,
+     		"Items" : Shopify.checkout.line_items
+  }
+);
+}/*
 var push_checkout = function(){
-	var checkout=[];
 	var len = Shopify.checkout.line_items.length;
 	var items = [];
 	for (i=0; i<len; i++) {
@@ -57,31 +60,29 @@ var push_checkout = function(){
 	 	obj["quantity"] = Shopify.checkout.line_items[i].quantity;
 	 	obj["vendor"] = Shopify.checkout.line_items[i].vendor;
 	 	items.push(obj);
- 	}
- 	checkout.push("Checkout",{
+	}
+ 	wizrocket.event.push("Checkout",{
  		"Amount" : Shopify.checkout.total_price,
  		"Currency" : Shopify.checkout.currency,
  		"Ship_country" : Shopify.checkout.shipping_address.country,
  		"Ship_region" : Shopify.checkout.shipping_address.province,
  		"Ship_city" : Shopify.checkout.shipping_address.city,
  		"email" : Shopify.checkout.email,
+ 		"Charged Id" : Shopify.checkout.order_id,
  		"items" : items
 // Payment mode (Credit Card, Paypal)
 // Items (see the platform specific integration guide for sending a list of products sold)
  	});
- 	wizrocket.event=checkout;
-	alert(JSON.stringify(wizrocket));
-}
+	//alert(JSON.stringify(wizrocket));
+}*/
 var profile_push_checkout = function(){
-	var profpushcheckout=[];
-	profpushcheckout.push({
+	wizrocket.profile.push({
 	"Site":{
 		"Name" : Shopify.checkout.billing_address.first_name,
 		"Email" : Shopify.checkout.email,
 		"Phone" : Shopify.checkout.billing_address.phone
 	}	
 	});
-	wizrocket.profile=profpushcheckout;
 }
 //var refthank = window.location.href;
 //var resthank = ref.match(/thank/g);
@@ -91,9 +92,10 @@ if(typeof product_json!="undefined"){
 	push_product_viewed();
 	document.getElementsByName("add")[0].onclick = push_add_to_cart;
 }
-if(Shopify.checkout != null){
+if(typeof Shopify.checkout != "undefined"){
 	profile_push_checkout();
-	push_checkout();
+	pushcheck();
+	//push_checkout();
 }
 if(typeof collection_name != "undefined"){
 	category_viewed();
